@@ -1,0 +1,110 @@
+body {
+    font-family: var(--default-font-family,ui-sans-serif,system-ui,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji");
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    line-height: 1.5;
+}
+
+button, option, select, input {
+    font-family: var(--default-font-family,ui-sans-serif,system-ui,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji");
+}
+
+header {
+    position: sticky;
+    z-index: 50;
+    width: 100%;
+    border-bottom: 1px solid #e5e7eb;
+    background: #fff;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.24);
+}
+
+.header-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 4rem;   
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: inherit;
+  flex-shrink: 0;
+}
+
+.logo-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #2563eb, #9333ea);
+  color: #fff;
+  font-weight: 700;
+  font-size: 22px;
+  flex-shrink: 0;
+}   
+
+.logo-text {
+  font-weight: 700;
+  font-size: 22px;
+  white-space: nowrap;
+  color:black;
+}
+
+.dekstop-nav {
+    align-items: center;
+    padding-left: 340px;
+}
+
+.dekstop-nav a{
+    color:#6f7276;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 18px;
+    margin: 0 20px;
+    transition: 0.2s ease;
+}
+
+.dekstop-nav a:hover {
+    color:#2563eb
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-left: auto;
+}
+
+.header-actions i {
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    color:#6f7276;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.header-actions i:hover {
+    background: #f3f4f6;
+}
+
+.header-actions a {
+    text-decoration: none;
+    color: inherit;
+}
