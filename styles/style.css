@@ -309,3 +309,105 @@ header {
 .sort-select:focus {
     border-color: #2563eb;
 }
+
+.site-footer {
+    background: #f9fafb;
+    border-top: 1px solid #e5e7eb;
+    padding: 3rem 0 1.5rem;
+    margin-top: 3rem;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-logo {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #2563eb, #9333ea);
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.footer-text {
+    color: #6b7280;
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
+
+.site-footer h4 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    color: #111827;
+}
+
+.site-footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.site-footer li {
+    margin-bottom: 0.5rem;
+}
+
+.site-footer a {
+    color: #6b7280;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: 0.2s;
+}
+
+.site-footer a:hover {
+    color: #2563eb;
+}
+
+#newsletterForm {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+#newsletterForm input {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    font-size: 0.85rem;
+    outline: none;
+}
+
+#newsletterForm input:focus {
+    border-color: #2563eb;
+}
+
+#newsletterForm button {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: 0.2s;
+}
+
+#newsletterForm button:hover {
+    background: #1d4ed8;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e5e7eb;
+    font-size: 0.8rem;
+    color: #6b7280;
+}
