@@ -1,11 +1,13 @@
 const products = [
-    { id: 1, name: "Premium Wireless Headphones", price: 299.99, rating: 5, image: "img/headphones.jpg" },
-    { id: 2, name: "Professional Laptop Pro", price: 1899.99, rating: 4.5, image: "img/laptop.jpg" },
-    { id: 3, name: "Smart Fitness Watch Ultra", price: 449.99, rating: 4, image: "img/watch.jpg" },
-    { id: 4, name: "Professional DSLR Camera", price: 2499.99, rating: 5, image: "img/camera.jpg" },
-    { id: 5, name: "Portable Bluetooth Speaker", price: 129.99, rating: 3.5, image: "img/speaker.jpg" },
+    { id: 1, name: "Portable Bluetooth Speaker", price: 129.99, rating: 3.5, image: "img/speaker.jpg" },
+    { id: 2, name: "Premium Wireless Headphones", price: 299.99, rating: 5, image: "img/headphones.jpg" },
+    { id: 3, name: "Professional DSLR Camera", price: 2499.99, rating: 5, image: "img/camera.jpg" },
+    { id: 4, name: "Professional Laptop Pro", price: 1899.99, rating: 4.5, image: "img/laptop.jpg" },
+    { id: 5, name: "Smart Fitness Watch Ultra", price: 449.99, rating: 4, image: "img/watch.jpg" },
     { id: 6, name: "Ultra-Thin Tablet Pro", price: 799.99, rating: 4.5, image: "img/tablet.jpg" }
 ];
+let currentProducts = [...products];
+let ratingFilters = [];
 
 function renderStars(rating) {
     const full = Math.floor(rating);
@@ -40,6 +42,26 @@ function renderProducts(productArray) {
     `).join('');
 }
 
+function applyFilters() {
+    let filtered = products.filter(p => {
+        if (ratingFilters.length === 0) return true;
+        return ratingFilters.some(r => p.rating >= parseInt(r));
+    });
+    currentProducts = filtered;
+    renderProducts(currentProducts);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     renderProducts(products);
+    document.querySelectorAll('.rating-filter').forEach(cb => {
+    cb.addEventListener('change', (e) => {
+        const val = e.target.value;
+        if (e.target.checked) {
+            ratingFilters.push(val);
+        } else {
+            ratingFilters = ratingFilters.filter(v => v !== val);
+        }
+        applyFilters();
+    });
+});
 });
