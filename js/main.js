@@ -9,6 +9,7 @@ const products = [
 let currentProducts = [...products];
 let ratingFilters = [];
 
+
 function renderStars(rating) {
     const full = Math.floor(rating);
     const half = rating % 1 !== 0;

@@ -115,23 +115,26 @@ header {
 }
 .catalog-hero {
     background: #f9fafb;
-    padding: 3rem 0;
+    padding: 3rem 0 2rem;
     text-align: left;
     border-bottom: 1px solid #e5e7eb;
 }
 .catalog-hero h1 {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
+    font-weight: 600;
     margin-bottom: 0.5rem;
     color: #111827;
 }
 .catalog-hero p {
     font-size: 1rem;
+    font-weight: 400;
     color: #6b7280;
+    margin-top: 0;
 }
 .catalog-layout {
     display: flex;
     gap: 2rem;
-    margin: 2rem 0;
+    margin: 2rem 0 4rem;
 }
 .filter-sidebar {
     flex: 0 0 260px;
@@ -153,7 +156,8 @@ header {
     top: 100px;
 }
 .filter-card h3 {
-    font-size: 1.25rem;
+    font-size: 1.1rem;
+    font-weight: 600;
     margin-bottom: 1.25rem;
     display: flex;
     align-items: center;
@@ -190,6 +194,7 @@ header {
 .product-title {
     font-weight: 600;
     font-size: 1rem;
+    line-height: 1.4;
     margin-bottom: 0.5rem;
     color: #111827;
     text-decoration: none;
@@ -209,11 +214,11 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 0.75rem;
+    margin-top: 0.5rem;
 }
 .price {
     font-weight: 700;
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     color: #2563eb;
 }
 .add-to-cart {
@@ -238,4 +243,30 @@ header {
     margin-bottom: 0.5rem;
     font-size: 0.9rem;
     cursor: pointer;
+}
+.price-inputs {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+}
+.price-inputs input {
+    width: 90px;
+    padding: 0.4rem 0.5rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    font-size: 0.85rem;
+}
+.apply-btn {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 0.4rem 1rem;
+    border-radius: 2rem;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.apply-btn:hover {
+    background: #1d4ed8;
 }
