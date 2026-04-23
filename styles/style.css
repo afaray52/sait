@@ -270,3 +270,42 @@ header {
 .apply-btn:hover {
     background: #1d4ed8;
 }
+
+.catalog-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1.5rem 0 2rem;
+}
+
+.product-count {
+    font-size: 0.9rem;
+    color: #6b7280;
+}
+
+.sort-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.sort-label {
+    font-size: 0.9rem;
+    color: #6b7280;
+}
+
+.sort-select {
+    padding: 0.4rem 0.6rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    background: #fff;
+    font-size: 0.9rem;
+    color: #111827;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.sort-select:focus {
+    border-color: #2563eb;
+}
