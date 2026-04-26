@@ -127,3 +127,18 @@ const productData = {
         ]
     }
 };
+
+function renderStars(rating) {
+    const full = Math.floor(rating);
+    const half = rating % 1 !== 0;
+    let stars = '';
+    for (let i = 0; i < full; i++) stars += '<i class="fa-solid fa-star"></i>';
+    if (half) stars += '<i class="fa-solid fa-star-half-alt"></i>';
+    let empty = 5 - Math.ceil(rating);
+    for (let i = 0; i < empty; i++) stars += '<i class="fa-regular fa-star"></i>';
+    return stars;
+}
+
+const urlParams = new URLSearchParams(window.location.search);
+const productId = parseInt(urlParams.get('id'));
+const product = productData[productId];
