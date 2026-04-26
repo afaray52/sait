@@ -142,3 +142,38 @@ function renderStars(rating) {
 const urlParams = new URLSearchParams(window.location.search);
 const productId = parseInt(urlParams.get('id'));
 const product = productData[productId];
+
+if (product) {
+    document.getElementById('breadcrumbCategory').textContent = product.category;
+    document.getElementById('breadcrumbName').textContent = product.name;
+    document.getElementById('productName').textContent = product.name;
+    document.getElementById('productRating').innerHTML = renderStars(product.rating) + ` <span>(${product.rating})</span>`;
+    document.getElementById('productPrice').textContent = '$' + product.price.toFixed(2);
+    document.getElementById('productDescription').textContent = product.description;
+    
+    document.getElementById('highlightsList').innerHTML = product.highlights.map(h => 
+        `<li><span class="highlight-dot"></span>${h}</li>`
+    ).join('');
+
+    document.getElementById('specsList').innerHTML = product.specs.map(s => 
+        `<li>${s}</li>`
+    ).join('');
+    
+    let currentImageIndex = 0;
+    const mainImage = document.getElementById('mainImage');
+    mainImage.src = product.images[0];
+    
+    const thumbnailList = document.getElementById('thumbnailList');
+    product.images.forEach((img, index) => {
+        const thumb = document.createElement('div');
+        thumb.className = `thumbnail ${index === 0 ? 'active' : ''}`;
+        thumb.innerHTML = `<img src="${img}" alt="Thumbnail">`;
+        thumb.addEventListener('click', () => {
+            currentImageIndex = index;
+            mainImage.src = product.images[currentImageIndex];
+            document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
+            thumb.classList.add('active');
+        });
+        thumbnailList.appendChild(thumb);
+    });
+}
