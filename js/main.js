@@ -27,7 +27,7 @@ function renderProducts(productArray) {
     const grid = document.getElementById('productsGrid');
     if (!grid) return;
     grid.innerHTML = productArray.map(p => `
-        <a href="product.html?id=${p.id}" class="product-card-link">
+        <a href="product_page.html?id=${p.id}" class="product-card-link">
             <div class="product-card">
                 <div class="product-img">
                     <img src="${p.image}" alt="${p.name}">
