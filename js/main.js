@@ -101,8 +101,23 @@ function updateSlider() {
     applyFilters();
 }
 
+function updateCartBadge() {
+    const badge = document.getElementById('cartBadge');
+    if (badge) {
+        const cart = JSON.parse(localStorage.getItem('techstore_cart') || '[]');
+        const total = cart.reduce((sum, item) => sum + item.quantity, 0);
+        badge.textContent = total;
+        if (total === 0) {
+            badge.style.display = 'none';
+        } else {
+            badge.style.display = 'inline-block';
+        }
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     renderProducts(products);
+    updateCartBadge();
     
     document.querySelectorAll('.rating-filter').forEach(cb => {
         cb.addEventListener('change', (e) => {
