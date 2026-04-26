@@ -1,0 +1,22 @@
+/* Cart Page Styles */
+.cart-page {
+    padding: 2rem 0 4rem;
+}
+
+.cart-page h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+}
+
+.cart-layout {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 2rem;
+}
+
+@media (max-width: 768px) {
+    .cart-layout {
+        grid-template-columns: 1fr;
+    }
+}
