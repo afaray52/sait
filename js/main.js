@@ -1,10 +1,10 @@
 const products = [
-    { id: 1, name: "Portable Bluetooth Speaker", price: 129.99, rating: 3.5, image: "img/speaker.jpg" },
-    { id: 2, name: "Premium Wireless Headphones", price: 299.99, rating: 5, image: "img/headphones.jpg" },
-    { id: 3, name: "Professional DSLR Camera", price: 2499.99, rating: 5, image: "img/camera.jpg" },
-    { id: 4, name: "Professional Laptop Pro", price: 1899.99, rating: 4.5, image: "img/laptop.jpg" },
-    { id: 5, name: "Smart Fitness Watch Ultra", price: 449.99, rating: 4, image: "img/watch.jpg" },
-    { id: 6, name: "Ultra-Thin Tablet Pro", price: 799.99, rating: 4.5, image: "img/tablet.jpg" }
+    { id: 1, name: "Portable Bluetooth Speaker", price: 129.99, rating: 3.5, category: "Audio", image: "img/speaker.jpg" },
+    { id: 2, name: "Premium Wireless Headphones", price: 299.99, rating: 5, category: "Audio", image: "img/headphones.jpg" },
+    { id: 3, name: "Professional DSLR Camera", price: 2499.99, rating: 5, category: "Photography", image: "img/camera.jpg" },
+    { id: 4, name: "Professional Laptop Pro", price: 1899.99, rating: 4.5, category: "Computers", image: "img/laptop.jpg" },
+    { id: 5, name: "Smart Fitness Watch Ultra", price: 449.99, rating: 4, category: "Wearables", image: "img/watch.jpg" },
+    { id: 6, name: "Ultra-Thin Tablet Pro", price: 799.99, rating: 4.5, category: "Tablets", image: "img/tablet.jpg" }
 ];
 
 let currentProducts = [...products];
@@ -27,21 +27,23 @@ function renderProducts(productArray) {
     const grid = document.getElementById('productsGrid');
     if (!grid) return;
     grid.innerHTML = productArray.map(p => `
-        <div class="product-card">
-            <div class="product-img">
-                <img src="${p.image}" alt="${p.name}">
-            </div>
-            <div class="product-info">
-                <h3 class="product-title">${p.name}</h3>
-                <div class="rating">
-                    ${renderStars(p.rating)} <span>(${p.rating})</span>
+        <a href="product.html?id=${p.id}" class="product-card-link">
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="${p.image}" alt="${p.name}">
                 </div>
-                <div class="price-row">
-                    <span class="price">$${p.price.toFixed(2)}</span>
-                    <button class="add-to-cart" data-id="${p.id}">Add to cart</button>
+                <div class="product-info">
+                    <h3 class="product-title">${p.name}</h3>
+                    <div class="rating">
+                        ${renderStars(p.rating)} <span>(${p.rating})</span>
+                    </div>
+                    <div class="price-row">
+                        <span class="price">$${p.price.toFixed(2)}</span>
+                        <span class="product-category">${p.category}</span>
+                    </div>
                 </div>
             </div>
-        </div>
+        </a>
     `).join('');
 }
 
@@ -56,7 +58,6 @@ function applyFilters() {
     if (currentSort === "name-desc") filtered.sort((a,b) => b.name.localeCompare(a.name));
     if (currentSort === "price-asc") filtered.sort((a,b) => a.price - b.price);
     if (currentSort === "price-desc") filtered.sort((a,b) => b.price - a.price);
-    if (currentSort === "rating") filtered.sort((a,b) => b.rating - a.rating);
     
     currentProducts = filtered;
     renderProducts(currentProducts);
