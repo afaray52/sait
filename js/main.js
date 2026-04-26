@@ -65,8 +65,44 @@ function applyFilters() {
     if (productCount) productCount.textContent = `${filtered.length} products`;
 }
 
+function updateSlider() {
+    const minSlider = document.getElementById('minPriceSlider');
+    const maxSlider = document.getElementById('maxPriceSlider');
+    const sliderRange = document.getElementById('sliderRange');
+    const minSpan = document.getElementById('minPriceValue');
+    const maxSpan = document.getElementById('maxPriceValue');
+    const maxLimit = 3000;
+    
+    let min = parseInt(minSlider.value);
+    let max = parseInt(maxSlider.value);
+    
+    if (min > max - 10) {
+        max = Math.min(max + 10, maxLimit);
+        minSlider.value = max;
+    }
+    if (max < min + 10) {
+        min = Math.max(min - 10, 0);
+        maxSlider.value = min;
+    }
+    
+    minPrice = min;
+    maxPrice = max;
+    
+    minSpan.textContent = '$' + min;
+    maxSpan.textContent = '$' + max;
+    
+    const leftPercent = (min / maxLimit) * 100;
+    const rightPercent = 100 - (max / maxLimit) * 100;
+    
+    sliderRange.style.left = leftPercent + '%';
+    sliderRange.style.right = rightPercent + '%';
+    
+    applyFilters();
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     renderProducts(products);
+    
     document.querySelectorAll('.rating-filter').forEach(cb => {
         cb.addEventListener('change', (e) => {
             const val = e.target.value;
@@ -79,16 +115,35 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     
-    document.getElementById('applyPriceBtn').addEventListener('click', () => {
-        let min = parseInt(document.getElementById('minPrice').value);
-        let max = parseInt(document.getElementById('maxPrice').value);
-        minPrice = isNaN(min) ? 0 : min;
-        maxPrice = isNaN(max) ? 3000 : max;
-        applyFilters();
-    });
+    const minSlider = document.getElementById('minPriceSlider');
+    const maxSlider = document.getElementById('maxPriceSlider');
+    
+    if (minSlider && maxSlider) {
+        minSlider.addEventListener('input', updateSlider);
+        maxSlider.addEventListener('input', updateSlider);
+        updateSlider();
+    }
     
     document.getElementById('sortSelect').addEventListener('change', (e) => {
         currentSort = e.target.value;
+        applyFilters();
+    });
+
+
+    document.getElementById('clearFiltersBtn').addEventListener('click', () => {
+        document.querySelectorAll('.rating-filter').forEach(cb => cb.checked = false);
+        ratingFilters = [];
+        
+        const minSlider = document.getElementById('minPriceSlider');
+        const maxSlider = document.getElementById('maxPriceSlider');
+        if (minSlider && maxSlider) {
+            minSlider.value = 0;
+            maxSlider.value = 3000;
+            updateSlider();
+        }
+        
+        document.getElementById('sortSelect').value = 'name-asc';
+        currentSort = 'name-asc';
         applyFilters();
     });
 });

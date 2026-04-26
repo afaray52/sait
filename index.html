@@ -64,13 +64,20 @@
                         </div>
                         <div class="filter-group">
                             <h4>Price range</h4>
-                            <div class="price-inputs">
-                                <input type="number" id="minPrice" placeholder="Min $" value="0" step="1">
-                                <span>—</span>
-                                <input type="number" id="maxPrice" placeholder="Max $" value="3000" step="1">
+                            <div class="slider-group">
+                                <div class="slider-container">
+                                    <div class="slider-track"></div>
+                                    <div class="slider-range" id="sliderRange" style="left: 0%; right: 0%;"></div>
+                                    <input type="range" min="0" max="3000" value="0" step="10" id="minPriceSlider">
+                                    <input type="range" min="0" max="3000" value="3000" step="10" id="maxPriceSlider">
+                                </div>
+                                <div class="price-labels">
+                                    <span id="minPriceValue">$0</span>
+                                    <span id="maxPriceValue">$3000</span>
+                                </div>
                             </div>
-                            <button id="applyPriceBtn" class="apply-btn">Apply</button>
                         </div>
+                        <button id="clearFiltersBtn" class="clear-filters-btn">Clear All Filters</button>
                     </div>
                 </aside>
 
