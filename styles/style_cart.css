@@ -221,3 +221,119 @@
         align-items: center;
     }
 }
+
+/* Order Summary */
+.summary-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    position: sticky;
+    top: 100px;
+}
+
+.summary-card h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #f3f4f6;
+    font-size: 0.875rem;
+}
+
+.summary-row.total {
+    border-bottom: none;
+    padding-top: 1rem;
+    font-size: 1.125rem;
+    font-weight: 700;
+}
+
+.summary-row.total span:last-child {
+    color: #2563eb;
+    font-size: 1.25rem;
+}
+
+.promo-section {
+    margin: 1.25rem 0;
+}
+
+.promo-section label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.promo-input-group {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.promo-input-group input {
+    flex: 1;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    outline: none;
+}
+
+.promo-input-group input:focus {
+    border-color: #2563eb;
+}
+
+.apply-promo-btn {
+    padding: 0.5rem 1rem;
+    background: #1f2937;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.apply-promo-btn:hover {
+    background: #111827;
+}
+
+.promo-hint {
+    font-size: 0.7rem;
+    color: #6b7280;
+    margin-top: 0.5rem;
+}
+
+.promo-message {
+    font-size: 0.75rem;
+    margin-top: 0.5rem;
+}
+
+.promo-message.success {
+    color: #10b981;
+}
+
+.promo-message.error {
+    color: #ef4444;
+}
+
+.checkout-btn {
+    width: 100%;
+    padding: 1rem;
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 0.75rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.checkout-btn:hover {
+    background: #1d4ed8;
+}
