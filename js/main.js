@@ -106,11 +106,11 @@ function updateCartBadge() {
     if (badge) {
         const cart = JSON.parse(localStorage.getItem('techstore_cart') || '[]');
         const total = cart.reduce((sum, item) => sum + item.quantity, 0);
-        badge.textContent = total;
+        badge.textContent = total;       
         if (total === 0) {
             badge.style.display = 'none';
         } else {
-            badge.style.display = 'inline-block';
+            badge.style.display = 'inline-flex';
         }
     }
 }

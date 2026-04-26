@@ -11,14 +11,38 @@
 .breadcrumb a {
     color: #6b7280;
     text-decoration: none;
+    font-weight: 400;
+    transition: 0.2s;
+    cursor: pointer;
 }
 
 .breadcrumb a:hover {
-    color: #2563eb;
+    color: #111827;
+    font-weight: 600;
 }
 
 .breadcrumb span {
     margin: 0 0.5rem;
+    color: #6b7280;
+    font-weight: 400;
+}
+
+.breadcrumb span:not(.separator):hover {
+    color: #111827;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.breadcrumb .separator {
+    margin: 0 0.5rem;
+    color: #6b7280;
+    font-weight: 400;
+    cursor: default;
+}
+
+.breadcrumb span:last-child {
+    font-weight: 600;
+    color: #111827;
 }
 
 .product-layout {
@@ -37,7 +61,6 @@
     font-size: 2rem;
     font-weight: 700;
     color: #2563eb;
-    margin-bottom: 1.5rem;
 }
 
 .short-description h2 {
@@ -204,10 +227,6 @@
     transition: 0.2s;
 }
 
-.quantity-controls button:hover {
-    background: #f9fafb;
-}
-
 .quantity-controls span {
     font-size: 1.125rem;
     font-weight: 600;
@@ -265,8 +284,8 @@
     transition: 0.2s;
 }
 
-.accordion-header:hover {
-    background: #f9fafb;
+.accordion-header:hover span {
+    text-decoration: underline;
 }
 
 .accordion-header i {
@@ -296,9 +315,21 @@
 }
 
 .specs-list li {
-    padding: 0.5rem 0;
-    border-bottom: 1px solid #f3f4f6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1.5px solid #e5e7eb;
     font-size: 0.875rem;
+}
+
+.specs-list li strong {
+    font-weight: 600;
+    color: #111827;
+}
+
+.specs-list li span {
+    color: #6b7280;
 }
 
 .specs-list li:last-child {
@@ -306,13 +337,26 @@
 }
 
 .product-rating {
+    display: block;
+    margin-bottom: 0.25rem;
+
+}
+
+.product-price-wrapper {
     display: flex;
-    align-items: center;
+    align-items: baseline;
     gap: 0.75rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 .reviews-count {
+    font-size: 0.875rem;
+    color: #6b7280;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.free-shipping {
     font-size: 0.875rem;
     color: #6b7280;
 }

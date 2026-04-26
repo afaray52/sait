@@ -9,7 +9,14 @@ const productData = {
         images: ["img/speaker.jpg", "img/speaker.jpg", "img/speaker.jpg"],
         description: "Take your music anywhere with this powerful portable speaker. Delivers rich, immersive sound with deep bass. Waterproof design perfect for outdoor adventures and pool parties.",
         highlights: ["Output Power: 20W", "Battery Life: 15 hours", "Water Rating: IPX7"],
-        specs: ["Model: SPK-2024", "Bluetooth Version: 5.3", "Charging Time: 3 hours", "Weight: 450g", "Warranty: 1 year"]
+        specs: [
+            { label: "Output Power", value: "20W" },
+            { label: "Battery Life", value: "15 hours" },
+            { label: "Water Rating", value: "IPX7" },
+            { label: "Bluetooth", value: "5.2" },
+            { label: "Range", value: "30 meters" },
+            { label: "Charging", value: "USB-C" }
+        ]
     },
     2: {
         id: 2,
@@ -21,7 +28,14 @@ const productData = {
         images: ["img/headphones.jpg", "img/headphones.jpg", "img/headphones.jpg"],
         description: "Experience crystal clear audio with our premium wireless headphones. Active noise cancellation, 40 hours of battery life, and ultra-comfortable design.",
         highlights: ["Active Noise Cancellation", "40 Hours Battery", "Bluetooth 5.2"],
-        specs: ["Model: WH-1000X", "Driver Size: 40mm", "Frequency Response: 20Hz-20kHz", "Weight: 250g"]
+        specs: [
+            { label: "Battery Life", value: "40 hours" },
+            { label: "Connectivity", value: "Bluetooth 5.3" },
+            { label: "Noise Cancellation", value: "Active ANC" },
+            { label: "Driver Size", value: "40mm" },
+            { label: "Weight", value: "250g" },
+            { label: "Charging Time", value: "2 hours" }
+        ]
     },
     3: {
         id: 3,
@@ -33,7 +47,14 @@ const productData = {
         images: ["img/camera.jpg", "img/camera.jpg", "img/camera.jpg"],
         description: "Capture stunning photos and videos with this professional-grade DSLR camera. 24.2MP sensor, 4K video recording, and advanced autofocus system.",
         highlights: ["24.2MP Sensor", "4K Video", "Advanced Autofocus"],
-        specs: ["Model: D850", "ISO Range: 64-25600", "Shutter Speed: 1/8000s", "Weight: 1005g"]
+        specs: [
+            { label: "Sensor", value: "45MP Full-Frame" },
+            { label: "Video", value: "4K 60fps" },
+            { label: "ISO Range", value: "100-51200" },
+            { label: "Autofocus Points", value: "693" },
+            { label: "Burst Speed", value: "10 fps" },
+            { label: "Display", value: "3.2\" Tilting Touchscreen" }
+        ]
     },
     4: {
         id: 4,
@@ -45,7 +66,14 @@ const productData = {
         images: ["img/laptop.jpg", "img/laptop.jpg", "img/laptop.jpg"],
         description: "Powerful laptop for professionals. 16GB RAM, 1TB SSD, and stunning Retina display. Perfect for developers, designers, and content creators.",
         highlights: ["16GB RAM", "1TB SSD", "Retina Display"],
-        specs: ["Model: Pro 16", "Processor: M2 Pro", "Battery: 20 hours", "Weight: 2.1kg"]
+        specs: [
+            { label: "Processor", value: "Intel Core i9" },
+            { label: "RAM", value: "32GB DDR5" },
+            { label: "Storage", value: "1TB SSD" },
+            { label: "Display", value: "15.6\" 4K OLED" },
+            { label: "Graphics", value: "NVIDIA RTX 4060" },
+            { label: "Battery", value: "12 hours" }
+        ]
     },
     5: {
         id: 5,
@@ -57,7 +85,14 @@ const productData = {
         images: ["img/watch.jpg", "img/watch.jpg", "img/watch.jpg"],
         description: "Track your fitness goals with this advanced smartwatch. Heart rate monitoring, GPS, sleep tracking, and 7 days battery life.",
         highlights: ["Heart Rate Monitor", "GPS Tracking", "7 Days Battery"],
-        specs: ["Model: Watch Ultra", "Display: 1.9-inch AMOLED", "Water Resistance: 50m", "Weight: 52g"]
+        specs: [
+            { label: "Display", value: "1.9\" AMOLED" },
+            { label: "Battery Life", value: "7 days" },
+            { label: "Water Resistance", value: "50m" },
+            { label: "GPS", value: "Built-in" },
+            { label: "Health Sensors", value: "Heart Rate, SpO2, ECG" },
+            { label: "Compatibility", value: "iOS & Android" }
+        ]
     },
     6: {
         id: 6,
@@ -69,7 +104,14 @@ const productData = {
         images: ["img/tablet.jpg", "img/tablet.jpg", "img/tablet.jpg"],
         description: "Ultra-thin and lightweight tablet perfect for work and entertainment. 11-inch display, 256GB storage, and all-day battery life.",
         highlights: ["11-inch Display", "256GB Storage", "All-day Battery"],
-        specs: ["Model: Tab Pro", "Processor: M1", "RAM: 8GB", "Weight: 460g"]
+        specs: [
+            { label: "Display", value: "12.9\" Liquid Retina" },
+            { label: "Processor", value: "M2 Chip" },
+            { label: "Storage", value: "256GB" },
+            { label: "RAM", value: "8GB" },
+            { label: "Battery", value: "10 hours" },
+            { label: "Stylus Support", value: "Yes" }
+        ]
     }
 };
 
@@ -101,7 +143,7 @@ if (product) {
     ).join('');
     
     document.getElementById('specsList').innerHTML = product.specs.map(s => 
-        `<li>${s}</li>`
+        `<li><strong>${s.label}</strong> <span>${s.value}</span></li>`
     ).join('');
     
     let currentImageIndex = 0;
