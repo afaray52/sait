@@ -57,3 +57,101 @@ function renderCart() {
     
     updateSummary();
 }
+
+function getCategoryName(productId) {
+    const categories = {
+        1: 'Audio',
+        2: 'Audio',
+        3: 'Photography',
+        4: 'Computers',
+        5: 'Wearables',
+        6: 'Tablets'
+    };
+    return categories[productId] || '';
+}
+
+function updateQuantity(productId, change) {
+    let cart = JSON.parse(localStorage.getItem('techstore_cart') || '[]');
+    const itemIndex = cart.findIndex(item => item.id === productId);
+    
+    if (itemIndex !== -1) {
+        const newQuantity = cart[itemIndex].quantity + change;
+        if (newQuantity <= 0) {
+            cart.splice(itemIndex, 1);
+        } else {
+            cart[itemIndex].quantity = newQuantity;
+        }
+    }
+    
+    localStorage.setItem('techstore_cart', JSON.stringify(cart));
+    renderCart();
+    if (typeof updateCartBadge === 'function') updateCartBadge();
+}
+
+function removeFromCart(productId) {
+    let cart = JSON.parse(localStorage.getItem('techstore_cart') || '[]');
+    cart = cart.filter(item => item.id !== productId);
+    localStorage.setItem('techstore_cart', JSON.stringify(cart));
+    renderCart();
+    if (typeof updateCartBadge === 'function') updateCartBadge();
+}
+
+let discount = 0;
+let appliedPromo = false;
+
+function updateSummary() {
+    const cart = JSON.parse(localStorage.getItem('techstore_cart') || '[]');
+    const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    const discountAmount = appliedPromo ? subtotal * 0.1 : 0;
+    const afterDiscount = subtotal - discountAmount;
+    const tax = afterDiscount * 0.08;
+    const total = afterDiscount + tax;
+    
+    const subtotalEl = document.getElementById('subtotal');
+    const taxEl = document.getElementById('tax');
+    const totalEl = document.getElementById('total');
+    
+    if (subtotalEl) subtotalEl.textContent = '$' + subtotal.toFixed(2);
+    if (taxEl) taxEl.textContent = '$' + tax.toFixed(2);
+    if (totalEl) totalEl.textContent = '$' + total.toFixed(2);
+}
+
+const applyPromoBtn = document.getElementById('applyPromoBtn');
+const checkoutBtn = document.getElementById('checkoutBtn');
+
+if (applyPromoBtn) {
+    applyPromoBtn.addEventListener('click', () => {
+        const promoInput = document.getElementById('promoCode');
+        const promoMessage = document.getElementById('promoMessage');
+        const code = promoInput.value.trim().toUpperCase();
+        
+        if (code === 'SAVE10') {
+            discount = 0.1;
+            appliedPromo = true;
+            promoMessage.textContent = 'Promo code applied! 10% discount';
+            promoMessage.className = 'promo-message success';
+        } else if (code === '') {
+            promoMessage.textContent = 'Please enter a promo code';
+            promoMessage.className = 'promo-message error';
+            return;
+        } else {
+            discount = 0;
+            appliedPromo = false;
+            promoMessage.textContent = 'Invalid promo code';
+            promoMessage.className = 'promo-message error';
+        }
+        
+        updateSummary();
+    });
+}
+
+if (checkoutBtn) {
+    checkoutBtn.addEventListener('click', () => {
+        alert('Checkout functionality coming soon!');
+    });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    renderCart();
+    updateSummary();
+});
