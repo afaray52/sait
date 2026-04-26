@@ -35,7 +35,26 @@
 
     <main class="product-page">
         <div class="container">
-            <!-- контент будет добавляться постепенно -->
+            <nav class="breadcrumb">
+                <a href="index.html">Products</a>
+                <span>/</span>
+                <span id="breadcrumbCategory">Category</span>
+                <span>/</span>
+                <span id="breadcrumbName">Product Name</span>
+            </nav>
+
+            <div class="product-layout">
+                <div class="product-gallery">
+                    <div class="main-image-container">
+                        <img id="mainImage" src="img/placeholder.jpg" alt="Product image">
+                        <button class="slider-btn prev-btn" id="prevBtn"><i class="fa-solid fa-chevron-left"></i></button>
+                        <button class="slider-btn next-btn" id="nextBtn"><i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+                    <div class="thumbnail-list" id="thumbnailList"></div>
+                </div>
+                <div class="product-info-block">
+                </div>
+            </div>
         </div>
     </main>
 
