@@ -4,8 +4,169 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TechStore</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-    
+    <header>
+        <div class="header-container">
+            <div class="header-content">
+                <a class="logo-link" href="index.html">
+                    <div class="logo-icon">T</div>
+                    <span class="logo-text">TechStore</span>
+                </a>
+                <nav class="dekstop-nav">
+                    <a href="index.html">Products</a>
+                    <a href="categories.html">Categories</a>
+                    <a href="deals.html">Deals</a>
+                    <a href="about.html">About</a>
+                </nav>
+                <div class="header-actions">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <a href="cart.html" class="cart-icon-wrapper">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span class="cart-badge" id="cartBadge">0</span>
+                    </a>
+                    <button class="mobile-menu-btn" id="mobileMenuBtn">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
+            </div>    
+        </div>
+    </header>
+
+    <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-header">
+            <span class="mobile-nav-title">Menu</span>
+            <button class="mobile-nav-close" id="mobileNavClose">
+                <i class="fa-solid fa-times"></i>
+            </button>
+        </div>
+        <div class="mobile-nav-links">
+            <a href="index.html">Products</a>
+            <a href="categories.html">Categories</a>
+            <a href="deals.html">Deals</a>
+            <a href="about.html">About</a>
+        </div>
+    </div>
+
+    <main>
+        <div class="container">
+            <div class="catalog-header">
+                <h1>Premium Electronics</h1>
+                <p>Discover our curated collection of high-quality tech products</p>
+            </div>
+        </div>
+
+        <div class="catalog-container container">
+            <button class="mobile-filter-btn" id="mobileFilterBtn">
+                <i class="fa-solid fa-sliders-h"></i> Filters
+            </button>
+            <div class="catalog-meta">
+                <span class="product-count" id="productCount">6 products</span>
+                <div class="sort-wrapper">
+                    <span class="sort-label">Sort by:</span>
+                    <select id="sortSelect" class="sort-select">
+                        <option value="name-asc">Name (A–Z)</option>
+                        <option value="name-desc">Name (Z–A)</option>
+                        <option value="price-asc">Price (Low to High)</option>
+                        <option value="price-desc">Price (High to Low)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="catalog-layout">
+                <aside class="filter-sidebar" id="filterSidebar">
+                    <div class="filter-card">
+                        <h3><i class="fa-solid fa-sliders-h"></i> Filters</h3>
+                        <div class="filter-group">
+                            <h4>Rating</h4>
+                            <label><input type="checkbox" class="rating-filter" value="5"> 5+ Stars</label>
+                            <label><input type="checkbox" class="rating-filter" value="4"> 4+ Stars</label>
+                            <label><input type="checkbox" class="rating-filter" value="3"> 3+ Stars</label>
+                        </div>
+                        <div class="filter-group">
+                            <h4>Price range</h4>
+                            <div class="slider-group">
+                                <div class="slider-container">
+                                    <div class="slider-track"></div>
+                                    <div class="slider-range" id="sliderRange" style="left: 0%; right: 0%;"></div>
+                                    <input type="range" min="0" max="3000" value="0" step="10" id="minPriceSlider">
+                                    <input type="range" min="0" max="3000" value="3000" step="10" id="maxPriceSlider">
+                                </div>
+                                <div class="price-labels">
+                                    <span id="minPriceValue">$0</span>
+                                    <span id="maxPriceValue">$3000</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button id="clearFiltersBtn" class="clear-filters-btn">Clear All Filters</button>
+                    </div>
+                </aside>
+
+                <div class="products-area">
+                    <div class="products-grid" id="productsGrid"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-logo">T</div>
+                    <p class="footer-text">Your trusted destination for premium electronics and tech accessories. Quality products, competitive prices, exceptional service.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Shop All Products</a></li>
+                        <li><a href="deals.html">Special Deals</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact Support</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="#">Shipping Information</a></li>
+                        <li><a href="#">Returns & Exchanges</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Track Order</a></li>
+                    </ul>
+                    <div class="footer-contact">
+                        <p>Customer Support:</p>
+                        <p class="footer-phone">1-800-TECH-SHOP</p>
+                        <p class="footer-email">support@techstore.com</p>
+                    </div>
+                </div>
+                <div>
+                    <h4>Newsletter</h4>
+                    <p class="footer-newsletter-text">Subscribe to get special offers, free giveaways, and updates.</p>
+                    <form id="newsletterForm">
+                        <input type="email" placeholder="Enter your email" required>
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 TechStore. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="js/main.js"></script>
 </body>
 </html>

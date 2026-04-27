@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechStore - Product</title>
+    <title>TechStore - Shopping Cart</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/style.css">
-    <link rel="stylesheet" href="styles/style_product.css">
+    <link rel="stylesheet" href="styles/style_cart.css">
 </head>
 <body>
     <header>
@@ -52,75 +52,69 @@
         </div>
     </div>
 
-    <main class="product-page">
+    <main class="cart-page">
         <div class="container">
-            <nav class="breadcrumb">
-                <a href="index.html">Products</a>
-                <span class="separator">></span>
-                <span id="breadcrumbCategory">Category</span>
-                <span class="separator">></span>
-                <span id="breadcrumbName">Product Name</span>
-            </nav>
-
-            <div class="product-layout">
-                <div class="product-gallery">
-                    <div class="main-image-container">
-                        <img id="mainImage" src="img/placeholder.jpg" alt="Product image">
-                        <button class="slider-btn prev-btn" id="prevBtn"><i class="fa-solid fa-chevron-left"></i></button>
-                        <button class="slider-btn next-btn" id="nextBtn"><i class="fa-solid fa-chevron-right"></i></button>
-                    </div>
-                    <div class="thumbnail-list" id="thumbnailList"></div>
-                </div>
-                <div class="product-info-block">
-                    <h1 id="productName">Product Name</h1>
-                    <div class="product-rating">
-                        <div class="rating" id="productRating"></div>
-                        <span class="reviews-count">Based on 327 reviews</span>
-                    </div>
-                    <div class="product-price-wrapper">
-                        <span class="product-price" id="productPrice">$0.00</span>
-                        <span class="free-shipping">Free shipping</span>
-                    </div>
-
-                    <div class="highlights">
-                        <h3>Key Highlights</h3>
-                        <ul id="highlightsList"></ul>
-                    </div>
-
-                    <div class="short-description">
-                        <h2>Description</h2>
-                        <p id="productDescription"></p>
-                    </div>
-
-                    <div class="quantity-section">
-                        <label>Quantity</label>
-                        <div class="quantity-controls">
-                            <button id="decrementQty">-</button>
-                            <span id="quantity">1</span>
-                            <button id="incrementQty">+</button>
+            <h1>Shopping Cart</h1>
+            <div class="cart-layout">
+                <div class="cart-items" id="cartItems"></div>
+                <div class="cart-summary">
+                    <div class="summary-card">
+                        <h2>Order Summary</h2>
+                        
+                        <div class="summary-row">
+                            <span>Subtotal</span>
+                            <span id="subtotal">$0.00</span>
                         </div>
+                        <div class="summary-row discount" id="discountRow" style="display: none;">
+                            <span>Discount (SAVE10)</span>
+                            <span id="discountAmount">-$0.00</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Tax (8%)</span>
+                            <span id="tax">$0.00</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Total</span>
+                            <span id="total">$0.00</span>
+                        </div>
+
+                        <div class="promo-section">
+                            <label>Promo Code</label>
+                            <div class="promo-input-group">
+                                <input type="text" id="promoCode" placeholder="Enter code">
+                                <button id="applyPromoBtn" class="apply-promo-btn">Apply</button>
+                            </div>
+                            <p class="promo-hint">Try code "SAVE10" for 10% off</p>
+                            <p id="promoMessage" class="promo-message"></p>
+                        </div>
+
+                        <button id="checkoutBtn" class="checkout-btn">Proceed to Checkout</button>
                     </div>
 
-                    <button id="addToCartBtn" class="add-to-cart-btn">
-                        <i class="fa-solid fa-cart-shopping"></i> Add to Cart
-                    </button>
-
-                    <div class="accordion">
-                        <div class="accordion-item">
-                            <button class="accordion-header" id="accordionBtn">
-                                <span>Technical Specifications</span>
-                                <i class="fa-solid fa-chevron-down"></i>
-                            </button>
-                            <div class="accordion-content" id="accordionContent">
-                                <ul class="specs-list" id="specsList"></ul>
+                    <div class="shipping-info-card">
+                        <h3><i class="fa-solid fa-truck"></i> Shipping Information</h3>
+                        <div class="shipping-details">
+                            <div class="shipping-address">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <div>
+                                    <p class="shipping-label">Delivery Address</p>
+                                    <p>123 Tech Street</p>
+                                    <p>San Francisco, CA 94105</p>
+                                </div>
+                            </div>
+                            <div class="shipping-estimate">
+                                <p class="shipping-label">Estimated Delivery</p>
+                                <p>3-5 business days</p>
+                                <p class="free-shipping-text">Free shipping on orders over $50</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="related-products" id="relatedProducts" style="display: none;">
-                <h2>Related Products</h2>
-                <div class="related-products-grid" id="relatedProductsGrid"></div>
+            <div class="empty-cart" id="emptyCart" style="display: none;">
+                <h1>Your Cart is Empty</h1>
+                <p>Add some amazing products to get started!</p>
+                <a href="index.html" class="continue-shopping-btn">Continue Shopping</a>
             </div>
         </div>
     </main>
@@ -182,6 +176,6 @@
     </footer>
 
     <script src="js/main.js"></script>
-    <script src="js/product.js"></script>
+    <script src="js/cart.js"></script>
 </body>
 </html>
