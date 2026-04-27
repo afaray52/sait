@@ -115,6 +115,47 @@ function updateCartBadge() {
     }
 }
 
+const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+const mobileNav = document.getElementById('mobileNav');
+const mobileNavClose = document.getElementById('mobileNavClose');
+
+const overlay = document.createElement('div');
+overlay.className = 'overlay';
+document.body.appendChild(overlay);
+
+function openMobileMenu() {
+    mobileNav.classList.add('open');
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeMobileMenu() {
+    mobileNav.classList.remove('open');
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', openMobileMenu);
+if (mobileNavClose) mobileNavClose.addEventListener('click', closeMobileMenu);
+overlay.addEventListener('click', closeMobileMenu);
+
+const mobileFilterBtn = document.getElementById('mobileFilterBtn');
+const filterSidebar = document.querySelector('.filter-sidebar');
+
+if (mobileFilterBtn && filterSidebar) {
+    mobileFilterBtn.addEventListener('click', () => {
+        filterSidebar.classList.toggle('open');
+    });
+    
+    document.addEventListener('click', (e) => {
+        if (filterSidebar.classList.contains('open')) {
+            if (!filterSidebar.contains(e.target) && !mobileFilterBtn.contains(e.target)) {
+                filterSidebar.classList.remove('open');
+            }
+        }
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     renderProducts(products);
     updateCartBadge();
@@ -144,7 +185,6 @@ document.addEventListener('DOMContentLoaded', () => {
         currentSort = e.target.value;
         applyFilters();
     });
-
 
     document.getElementById('clearFiltersBtn').addEventListener('click', () => {
         document.querySelectorAll('.rating-filter').forEach(cb => cb.checked = false);

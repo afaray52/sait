@@ -10,15 +10,15 @@
 </head>
 <body>
     <header>
-        <div class = "header-container">
-            <div class = "header-content">
+        <div class="header-container">
+            <div class="header-content">
                 <a class="logo-link" href="index.html">
-                    <div class = "logo-icon"> T </div>
-                    <span class ="logo-text">TechStore</span>
+                    <div class="logo-icon">T</div>
+                    <span class="logo-text">TechStore</span>
                 </a>
-                <nav class = "dekstop-nav">
+                <nav class="dekstop-nav">
                     <a href="index.html">Products</a>
-                    <a href= "categories.html">Categories</a>
+                    <a href="categories.html">Categories</a>
                     <a href="deals.html">Deals</a>
                     <a href="about.html">About</a>
                 </nav>
@@ -28,11 +28,30 @@
                         <i class="fa-solid fa-cart-shopping"></i>
                         <span class="cart-badge" id="cartBadge">0</span>
                     </a>
+                    <button class="mobile-menu-btn" id="mobileMenuBtn">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
                 </div>
             </div>    
         </div>
     </header>
-     <main>
+
+    <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-header">
+            <span class="mobile-nav-title">Menu</span>
+            <button class="mobile-nav-close" id="mobileNavClose">
+                <i class="fa-solid fa-times"></i>
+            </button>
+        </div>
+        <div class="mobile-nav-links">
+            <a href="index.html">Products</a>
+            <a href="categories.html">Categories</a>
+            <a href="deals.html">Deals</a>
+            <a href="about.html">About</a>
+        </div>
+    </div>
+
+    <main>
         <div class="container">
             <div class="catalog-header">
                 <h1>Premium Electronics</h1>
@@ -41,6 +60,9 @@
         </div>
 
         <div class="catalog-container container">
+            <button class="mobile-filter-btn" id="mobileFilterBtn">
+                <i class="fa-solid fa-sliders-h"></i> Filters
+            </button>
             <div class="catalog-meta">
                 <span class="product-count" id="productCount">6 products</span>
                 <div class="sort-wrapper">
@@ -55,7 +77,7 @@
             </div>
 
             <div class="catalog-layout">
-                <aside class="filter-sidebar">
+                <aside class="filter-sidebar" id="filterSidebar">
                     <div class="filter-card">
                         <h3><i class="fa-solid fa-sliders-h"></i> Filters</h3>
                         <div class="filter-group">
@@ -89,7 +111,8 @@
             </div>
         </div>
     </main>
-     <footer class="site-footer">
+
+    <footer class="site-footer">
         <div class="container">
             <div class="footer-grid">
                 <div>

@@ -427,3 +427,35 @@
     color: #10b981;
     font-weight: 600;
 }
+
+@media (max-width: 639px) {
+    .cart-page h1 {
+        font-size: 1.5rem;
+    }
+    
+    .cart-item-footer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .item-price {
+        text-align: left;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .promo-input-group {
+        flex-direction: column;
+    }
+    
+    .apply-promo-btn {
+        width: 100%;
+    }
+}
+
+@media (min-width: 640px) and (max-width: 767px) {
+    .cart-layout {
+        grid-template-columns: 1fr;
+    }
+}
