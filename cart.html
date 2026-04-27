@@ -47,6 +47,10 @@
                             <span>Subtotal</span>
                             <span id="subtotal">$0.00</span>
                         </div>
+                        <div class="summary-row discount" id="discountRow" style="display: none;">
+                            <span>Discount (SAVE10)</span>
+                            <span id="discountAmount">-$0.00</span>
+                        </div>
                         <div class="summary-row">
                             <span>Tax (8%)</span>
                             <span id="tax">$0.00</span>
@@ -67,6 +71,25 @@
                         </div>
 
                         <button id="checkoutBtn" class="checkout-btn">Proceed to Checkout</button>
+                    </div>
+
+                    <div class="shipping-info-card">
+                        <h3><i class="fa-solid fa-truck"></i> Shipping Information</h3>
+                        <div class="shipping-details">
+                            <div class="shipping-address">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <div>
+                                    <p class="shipping-label">Delivery Address</p>
+                                    <p>123 Tech Street</p>
+                                    <p>San Francisco, CA 94105</p>
+                                </div>
+                            </div>
+                            <div class="shipping-estimate">
+                                <p class="shipping-label">Estimated Delivery</p>
+                                <p>3-5 business days</p>
+                                <p class="free-shipping-text">Free shipping on orders over $50</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

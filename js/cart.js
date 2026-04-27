@@ -30,7 +30,7 @@ function renderCart() {
                 </div>
                 <div class="cart-item-footer">
                     <div class="quantity-control">
-                        <button class="decrease-qty" data-id="${item.id}">-</button>
+                        <button class="decrease-qty" data-id="${item.id}" ${item.quantity === 1 ? 'disabled' : ''}>-</button>
                         <span class="item-quantity">${item.quantity}</span>
                         <button class="increase-qty" data-id="${item.id}">+</button>
                     </div>
@@ -110,33 +110,50 @@ function updateSummary() {
     const subtotalEl = document.getElementById('subtotal');
     const taxEl = document.getElementById('tax');
     const totalEl = document.getElementById('total');
+    const discountRow = document.getElementById('discountRow');
+    const discountAmountEl = document.getElementById('discountAmount');
     
     if (subtotalEl) subtotalEl.textContent = '$' + subtotal.toFixed(2);
     if (taxEl) taxEl.textContent = '$' + tax.toFixed(2);
     if (totalEl) totalEl.textContent = '$' + total.toFixed(2);
+    
+    if (appliedPromo && discountAmountEl) {
+        discountAmountEl.textContent = '-$' + discountAmount.toFixed(2);
+        if (discountRow) discountRow.style.display = 'flex';
+    } else {
+        if (discountRow) discountRow.style.display = 'none';
+    }
 }
 
 const applyPromoBtn = document.getElementById('applyPromoBtn');
 const checkoutBtn = document.getElementById('checkoutBtn');
+const promoInput = document.getElementById('promoCode');
+const promoMessage = document.getElementById('promoMessage');
+const promoHint = document.querySelector('.promo-hint');
 
 if (applyPromoBtn) {
     applyPromoBtn.addEventListener('click', () => {
-        const promoInput = document.getElementById('promoCode');
-        const promoMessage = document.getElementById('promoMessage');
         const code = promoInput.value.trim().toUpperCase();
         
-        if (code === 'SAVE10') {
+        if (code === 'SAVE10' && !appliedPromo) {
             discount = 0.1;
             appliedPromo = true;
-            promoMessage.textContent = 'Promo code applied! 10% discount';
+            promoMessage.textContent = 'Promo code applied successfully!';
             promoMessage.className = 'promo-message success';
+            if (promoHint) promoHint.style.display = 'none';
+            promoInput.disabled = true;
+            applyPromoBtn.disabled = true;
+            applyPromoBtn.style.background = '#9ca3af';
+            applyPromoBtn.style.cursor = 'not-allowed';
         } else if (code === '') {
             promoMessage.textContent = 'Please enter a promo code';
             promoMessage.className = 'promo-message error';
             return;
+        } else if (appliedPromo) {
+            promoMessage.textContent = 'Promo code already applied!';
+            promoMessage.className = 'promo-message error';
+            return;
         } else {
-            discount = 0;
-            appliedPromo = false;
             promoMessage.textContent = 'Invalid promo code';
             promoMessage.className = 'promo-message error';
         }
