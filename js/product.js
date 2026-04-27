@@ -188,6 +188,37 @@ if (product) {
             updateActiveThumbnail();
         });
     }
+
+    function renderRelatedProducts() {
+        const relatedBlock = document.getElementById('relatedProducts');
+        const relatedGrid = document.getElementById('relatedProductsGrid');
+        
+        if (product.category !== 'Audio') {
+            if (relatedBlock) relatedBlock.style.display = 'none';
+            return;
+        }
+        
+        const otherProduct = product.id === 1 ? productData[2] : productData[1];
+        
+        if (otherProduct && relatedGrid) {
+            relatedBlock.style.display = 'block';
+            relatedGrid.innerHTML = `
+                <a href="product_page.html?id=${otherProduct.id}" class="related-product-card">
+                    <div class="related-product-img">
+                        <img src="${otherProduct.image}" alt="${otherProduct.name}">
+                    </div>
+                    <div class="related-product-info">
+                        <h3 class="related-product-title">${otherProduct.name}</h3>
+                        <div class="related-product-rating">${renderStars(otherProduct.rating)} <span>(${otherProduct.rating})</span></div>
+                        <div class="related-product-price-row">
+                            <span class="related-product-price">$${otherProduct.price.toFixed(2)}</span>
+                            <span class="related-product-category">${otherProduct.category}</span>
+                        </div>
+                    </div>
+                </a>
+            `;
+        }
+    }
     
     let quantity = 1;
     const quantitySpan = document.getElementById('quantity');
@@ -248,4 +279,6 @@ if (product) {
             if (typeof updateCartBadge === 'function') updateCartBadge();
         });
     }
+    
+    renderRelatedProducts();  
 }
